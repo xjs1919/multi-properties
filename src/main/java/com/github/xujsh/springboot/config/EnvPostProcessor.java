@@ -40,9 +40,9 @@ public class EnvPostProcessor implements EnvironmentPostProcessor {
 						continue;
 					}
 					InputStream in = new FileInputStream(includeFile);
-					StreamUtils.copy(new FileInputStream(includeFile), out);
-					out.write("\r\n".getBytes());
+					StreamUtils.copy(in, out);
 					in.close();	
+					out.write("\r\n".getBytes());
 				}
 				Properties properties = new Properties();
 				properties.load(new ByteArrayInputStream(out.toByteArray()));
